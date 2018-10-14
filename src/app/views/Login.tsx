@@ -6,9 +6,10 @@ import {
   TextInput,
   StyleSheet,
   TouchableHighlight,
-  ActivityIndicator,
-  Dimensions
+  ActivityIndicator
 } from 'react-native';
+import { connect } from 'react-redux';
+import { AUTH_ACTIONS } from '../store/actions';
 
 interface ILoginState {
   isInProgress: boolean,
@@ -41,7 +42,7 @@ class LoginForm implements ILoginForm {
   }
 }
 
-export class Login extends Component {
+class Login extends Component {
   constructor(props: Readonly<{}>) {
     super(props);
 
@@ -67,6 +68,8 @@ export class Login extends Component {
   onSubmitLoginRequest = (username: string, password: string) => {
     if (!username || !password) return;
 
+    (this.props as any).dispatch(AUTH_ACTIONS.loginRequest({ username, password }));
+
     this.setState((prevState: Readonly<ILoginState>) => ({
       ...prevState,
       isInProgress: true
@@ -75,6 +78,7 @@ export class Login extends Component {
 
   render() {
     const state = this.state as ILoginState;
+    const { isInProgress } = this.props as any;
     const { username, password } = state.loginData;
 
     return (
@@ -109,16 +113,20 @@ export class Login extends Component {
 
         <View style={[
           styles.loaderWrapper,
-          state.isInProgress ? {} : styles.hidden
+          isInProgress ? {} : styles.hidden
         ]}>
           <ActivityIndicator
-            animating={ state.isInProgress }
+            animating={ isInProgress }
             size="large" />
         </View>
       </View>
     );
   }
 }
+
+const mapStateToProps = (state: any) => ({...state.authReducer});
+
+export default connect(mapStateToProps)(Login);
 
 const styles = StyleSheet.create({
   hidden: {
