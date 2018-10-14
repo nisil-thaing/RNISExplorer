@@ -21,17 +21,34 @@ export default class ApiClient {
     this.post = this.post.bind(this);
   }
 
-  *get(url: string, config?: IHttpRequestConfig) {
+  private getDataFromResponse(response: { status: number, data: any }) {
+    if (response.status < 200 || response.status >= 300) {
+      throw new Error('Oops! Something went wrong!');
+    }
+
+    return response.data;
+  }
+
+  async get(url: string, config?: IHttpRequestConfig) {
     try {
-      yield this._axiosInstance.get(url, config);
+      const result = await this._axiosInstance.get(url, config);
+
+      const resData = this.getDataFromResponse(result);
+
+      return resData;
     } catch(err) {
       throw new Error(err);
     }
   }
 
-  *post(url: string, data?: any, config?: IHttpRequestConfig) {
+  async post(url: string, data?: any, config?: IHttpRequestConfig) {
     try {
-      yield this._axiosInstance.post(url, data || {}, config || {});
+      const result = await this._axiosInstance
+                            .post(url, data || {}, config || {});
+
+      const resData = this.getDataFromResponse(result);
+
+      return resData;
     } catch(err) {
       throw new Error(err);
     }

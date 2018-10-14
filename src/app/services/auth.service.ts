@@ -14,13 +14,20 @@ export class AuthService {
     this.login = this.login.bind(this);
   }
 
-  *login(params?: ILoginParams) {
+  async login(params?: ILoginParams) {
     if (!params || !params.username || !params.password) {
       throw new Error('Login failed!');
     }
 
     try {
-      yield this._apiClient.post('/auth/login', {...params, email: params.username});
+      const result = await this._apiClient
+                      .post(
+                        '/auth/login',
+                        {
+                          ...params,
+                          email: params.username
+                        });
+      return result;
     } catch(err) {
       throw new Error(err);
     }
