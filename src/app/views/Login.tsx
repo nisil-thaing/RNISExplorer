@@ -11,26 +11,29 @@ import {
 import { connect } from 'react-redux';
 import { AUTH_ACTIONS } from '../store/actions';
 
+interface ILoginProps {
+  isInProgress: boolean;
+}
+
 interface ILoginState {
-  isInProgress: boolean,
   loginData: ILoginForm
 }
 
 interface ILoginForm {
-  username: string,
+  email: string,
   password: string
 }
 
 class LoginForm implements ILoginForm {
-  private _username: string = '';
+  private _email: string = '';
   private _password: string = '';
   
-  set username(value: string) {
-    this._username = value;
+  set email(value: string) {
+    this._email = value;
   }
 
-  get username(): string {
-    return this._username;
+  get email(): string {
+    return this._email;
   }
 
   set password(value: string) {
@@ -42,12 +45,11 @@ class LoginForm implements ILoginForm {
   }
 }
 
-class Login extends Component {
-  constructor(props: Readonly<{}>) {
+class Login extends Component<ILoginProps, ILoginState> {
+  constructor(props: ILoginProps) {
     super(props);
 
     this.state = {
-      isInProgress: false,
       loginData: new LoginForm()
     }
   }
@@ -57,7 +59,6 @@ class Login extends Component {
 
     this.setState((prevState: Readonly<ILoginState>) => ({
       ...prevState,
-      isInProgress: false,
       loginData: {
         ...(prevState.loginData),
         [field]: value
@@ -65,21 +66,16 @@ class Login extends Component {
     }))
   }
 
-  onSubmitLoginRequest = (username: string, password: string) => {
-    if (!username || !password) return;
+  onSubmitLoginRequest = (email: string, password: string) => {
+    if (!email || !password) return;
 
-    (this.props as any).dispatch(AUTH_ACTIONS.loginRequest({ username, password }));
-
-    this.setState((prevState: Readonly<ILoginState>) => ({
-      ...prevState,
-      isInProgress: true
-    }))
+    (this.props as any).dispatch(AUTH_ACTIONS.loginRequest({ email, password }));
   }
 
   render() {
-    const state = this.state as ILoginState;
-    const { isInProgress } = this.props as any;
-    const { username, password } = state.loginData;
+    const state = this.state;
+    const { isInProgress } = this.props;
+    const { email, password } = state.loginData;
 
     return (
       <View style={ styles.container }>
@@ -93,20 +89,20 @@ class Login extends Component {
         <View style={ styles.loginForm }>
           <TextInput
             style={ styles.input }
-            placeholder="Github Username"
-            onChangeText={ (text: string) => this.onLoginFormTextChange('username', text) } />
+            placeholder="Email"
+            onChangeText={ (text: string) => this.onLoginFormTextChange('email', text) } />
           <TextInput
             style={ styles.input }
             secureTextEntry={ true }
-            placeholder="Github Password"
+            placeholder="Password"
             onChangeText={ (text: string) => this.onLoginFormTextChange('password', text) } />
           <TouchableHighlight
             style={ [
               styles.submit,
-              username && password ? {} : styles.disabled
+              email && password ? {} : styles.disabled
             ] }
-            onPress={ () => this.onSubmitLoginRequest(username, password) }
-            disabled={ !username || !password }>
+            onPress={ () => this.onSubmitLoginRequest(email, password) }
+            disabled={ !email || !password }>
             <Text style={ styles.submitText }>Login</Text>
           </TouchableHighlight>
         </View>

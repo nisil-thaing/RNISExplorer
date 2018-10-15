@@ -1,7 +1,7 @@
 import ApiClient from '../utils/api-client.util';
 
 export interface ILoginParams {
-  username: string,
+  email: string,
   password: string
 }
 
@@ -15,18 +15,13 @@ export class AuthService {
   }
 
   async login(params?: ILoginParams) {
-    if (!params || !params.username || !params.password) {
+    if (!params || !params.email || !params.password) {
       throw new Error('Login failed!');
     }
 
     try {
       const result = await this._apiClient
-                      .post(
-                        '/auth/login',
-                        {
-                          ...params,
-                          email: params.username
-                        });
+                      .post('/auth/login', params);
       return result;
     } catch(err) {
       throw new Error(err);
