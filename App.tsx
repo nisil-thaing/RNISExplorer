@@ -11,8 +11,8 @@ import { StyleSheet, View } from 'react-native';
 import { Provider } from 'react-redux';
 
 import configureStore from './src/app/store';
-import { SCREEN } from './src/app';
 import rootSaga from './src/app/store/effects';
+import { RootRoutingStacks } from './src/app/commons';
 
 const store = configureStore();
 store.runSaga(rootSaga);
@@ -23,7 +23,7 @@ export default class App extends Component<Props> {
     return (
       <Provider store={ store }>
         <View style={styles.container}>
-          <SCREEN.Login />
+          <RootRoutingStacks />
         </View>
       </Provider>
     );
@@ -34,7 +34,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
     backgroundColor: '#F5FCFF',
   }
 });

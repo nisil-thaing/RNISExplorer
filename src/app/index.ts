@@ -1,3 +1,3 @@
-import * as SCREEN from './views';
+import { RootRoutingStacks } from './commons';
 
-export { SCREEN };
+export { RootRoutingStacks };
