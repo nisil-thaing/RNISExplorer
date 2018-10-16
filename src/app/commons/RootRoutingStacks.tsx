@@ -1,9 +1,9 @@
-import { createStackNavigator } from 'react-navigation';
+import { createStackNavigator, NavigationContainer } from 'react-navigation';
 
 import { ROUTES_NAMES } from '../utils/routes.constant';
 import * as SCREEN from '../views';
 
-export const RootRoutingStacks = createStackNavigator({
+export const RootRoutingStacks: NavigationContainer = createStackNavigator({
   [ROUTES_NAMES.HomeRT]: {
     screen: SCREEN.Home
   },
