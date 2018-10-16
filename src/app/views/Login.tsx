@@ -9,6 +9,8 @@ import {
   ActivityIndicator
 } from 'react-native';
 import { connect } from 'react-redux';
+
+import { IAppState } from '../store/states';
 import { AUTH_ACTIONS } from '../store/actions';
 
 interface ILoginProps {
@@ -120,7 +122,7 @@ class Login extends Component<ILoginProps, ILoginState> {
   }
 }
 
-const mapStateToProps = (state: any) => ({...state.authReducer});
+const mapStateToProps = (state: IAppState) => ({...state.authReducer});
 
 export default connect(mapStateToProps)(Login);
 

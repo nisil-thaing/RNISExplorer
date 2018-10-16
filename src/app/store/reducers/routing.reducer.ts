@@ -8,7 +8,7 @@ import { ROUTING_ACTION_TYPES } from '../actions';
 export default function routingReducer(
   state: IRoutingInitialState = ROUTING_INITIAL_STATE,
   action: IAppAction
-) {
+): IRoutingInitialState {
   const { type, payload } = action;
 
   switch (type) {

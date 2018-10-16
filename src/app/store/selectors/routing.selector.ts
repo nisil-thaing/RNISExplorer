@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect';
-import { IRoutingInitialState } from '../states';
+import { IRoutingInitialState, IAppState } from '../states';
 
-const routingSelector = (state: any) => state.routingReducer;
+const routingSelector = (state: IAppState) => state.routingReducer;
 
 export const navigatorSelector = createSelector(
   routingSelector,

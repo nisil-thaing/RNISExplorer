@@ -1,5 +1,3 @@
-import { Action } from 'redux';
-
 export {
   IAuthInitialState,
   AUTH_INITIAL_STATE
@@ -8,8 +6,8 @@ export {
   IRoutingInitialState,
   ROUTING_INITIAL_STATE
 } from './routing.state';
-
-export interface IAppAction extends Action {
-  type: string,
-  payload?: any;
-}
+export {
+  IAppState,
+  IAppAction,
+  APP_INITIAL_STATE
+} from './app.state';

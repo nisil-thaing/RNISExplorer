@@ -1,9 +1,13 @@
-import { IAuthInitialState, AUTH_INITIAL_STATE } from '../states';
+import {
+  IAppAction,
+  IAuthInitialState,
+  AUTH_INITIAL_STATE
+} from '../states';
 import { AUTH_ACTION_TYPES } from '../actions';
 
 export default function authReducer (
   state: IAuthInitialState = AUTH_INITIAL_STATE,
-  action: { type: string; payload: any; }
+  action: IAppAction
 ): IAuthInitialState {
   switch (action.type) {
     case AUTH_ACTION_TYPES.LOGIN_REQUEST:

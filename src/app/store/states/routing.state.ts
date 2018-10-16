@@ -1,9 +1,7 @@
 import {
   NavigationContainer,
-  NavigationNavigateActionPayload,
-  NavigationParams,
-  NavigationNavigateAction
-} from "react-navigation";
+  NavigationNavigateActionPayload
+} from 'react-navigation';
 
 export interface IRoutingInitialState extends NavigationNavigateActionPayload {
   navigator: NavigationContainer,
