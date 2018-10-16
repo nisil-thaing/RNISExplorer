@@ -13,7 +13,9 @@ function* sendLoginRequest(action: any) {
       action.payload.params
     );
 
-    yield put(ROUTING_ACTIONS.navigate(ROUTES_NAMES.HomeRT));
+    yield put(ROUTING_ACTIONS.navigate({
+      routeName: ROUTES_NAMES.HomeRT
+    }));
     yield put(AUTH_ACTIONS.loginRequestSuccess(loginResult));
   } catch (err) {
     yield put(AUTH_ACTIONS.loginRequestFailure(err));

@@ -8,6 +8,7 @@
 
 import React, { Component } from 'react';
 import { StyleSheet, View } from 'react-native';
+import { NavigationContainer } from 'react-navigation';
 import { Provider } from 'react-redux';
 
 import configureStore from './src/app/store';
@@ -25,15 +26,17 @@ export default class App extends Component<Props> {
     this._store.runSaga(rootSaga);
   }
 
-  setTopLevelNavigator = (navigatorRef: any) => {
-    this._store.dispatch(ROUTING_ACTIONS.setTopLevelNavigator(navigatorRef))
+  setTopLevelNavigator(navigatorRef: NavigationContainer) {
+    this._store.dispatch(
+      ROUTING_ACTIONS.setTopLevelNavigator(navigatorRef)
+    );
   };
 
   render() {
     return (
       <Provider store={ this._store }>
         <View style={styles.container}>
-          <RootRoutingStacks ref={ this.setTopLevelNavigator } />
+          <RootRoutingStacks ref={ this.setTopLevelNavigator.bind(this) } />
         </View>
       </Provider>
     );

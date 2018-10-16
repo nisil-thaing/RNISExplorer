@@ -1,18 +1,16 @@
-import axios from 'axios';
+import axios, {
+  AxiosInstance,
+  AxiosRequestConfig,
+  AxiosResponse
+} from 'axios';
 
-interface IHttpRequestConfig {
-  baseURL?: string,
-  timeout?: number,
-  params?: Object
-}
-
-const DEFAULT_CONFIG: IHttpRequestConfig = {
+const DEFAULT_CONFIG: AxiosRequestConfig = {
   baseURL: 'http://localhost:4040/api/',
   timeout: 1000
 }
 
 export default class ApiClient {
-  private _axiosInstance: any;
+  private _axiosInstance: AxiosInstance;
 
   constructor() {
     this._axiosInstance = axios.create(DEFAULT_CONFIG);
@@ -21,7 +19,7 @@ export default class ApiClient {
     this.post = this.post.bind(this);
   }
 
-  private getDataFromResponse(response: { status: number, data: any }) {
+  private getDataFromResponse(response: AxiosResponse<any>) {
     if (response.status < 200 || response.status >= 300) {
       throw new Error('Oops! Something went wrong!');
     }
@@ -29,7 +27,7 @@ export default class ApiClient {
     return response.data;
   }
 
-  async get(url: string, config?: IHttpRequestConfig) {
+  async get(url: string, config?: AxiosRequestConfig) {
     try {
       const result = await this._axiosInstance.get(url, config);
 
@@ -41,7 +39,7 @@ export default class ApiClient {
     }
   }
 
-  async post(url: string, data?: any, config?: IHttpRequestConfig) {
+  async post(url: string, data?: any, config?: AxiosRequestConfig) {
     try {
       const result = await this._axiosInstance
                             .post(url, data || {}, config || {});

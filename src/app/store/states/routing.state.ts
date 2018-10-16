@@ -1,13 +1,17 @@
-export interface IRoutingInitialState {
-  navigator: any,
-  routeName: string,
-  params: any,
+import {
+  NavigationContainer,
+  NavigationNavigateActionPayload,
+  NavigationParams,
+  NavigationNavigateAction
+} from "react-navigation";
+
+export interface IRoutingInitialState extends NavigationNavigateActionPayload {
+  navigator: NavigationContainer,
   error: any
 }
 
 export const ROUTING_INITIAL_STATE: IRoutingInitialState = {
-  navigator: null,
+  navigator: <NavigationContainer>({}),
   routeName: '',
-  params: {},
   error: null
 }

@@ -1,4 +1,19 @@
-import { ILoginParams } from '../../services';
+import {
+  NavigationContainer,
+  NavigationNavigateActionPayload
+} from 'react-navigation';
+
+import { IAppAction } from '../states';
+
+export interface ISetTopLevelNavigatorAction extends IAppAction {
+  payload: {
+    navigator: NavigationContainer
+  }
+}
+
+export interface IRoutingNavigateAction extends IAppAction {
+  payload: NavigationNavigateActionPayload
+}
 
 export const ROUTING_ACTION_TYPES = {
   SET_TOP_LEVEL_NAVIGATOR: '[ROUTING_ACTION_TYPES]_SET_TOP_LEVEL_NAVIGATOR',
@@ -6,12 +21,12 @@ export const ROUTING_ACTION_TYPES = {
 }
 
 export const ROUTING_ACTIONS = {
-  setTopLevelNavigator: (navigationRef: any) => ({
+  setTopLevelNavigator: (navigationRef: NavigationContainer): ISetTopLevelNavigatorAction => ({
     type: ROUTING_ACTION_TYPES.SET_TOP_LEVEL_NAVIGATOR,
     payload: { navigator: navigationRef }
   }),
-  navigate: (routeName: string, params?: any) => ({
+  navigate: (options: NavigationNavigateActionPayload): IRoutingNavigateAction => ({
     type: ROUTING_ACTION_TYPES.NAVIGATE,
-    payload: { routeName, params }
+    payload: options
   })
 }
