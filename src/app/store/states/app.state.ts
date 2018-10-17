@@ -11,10 +11,16 @@ export interface IAppState {
   routingReducer: IRoutingInitialState
 }
 
+export interface IAppStateError {
+  action: string,
+  errorDescription: any
+}
+
 export interface IAppAction extends Action {
   type: string,
   payload?: any;
 }
+
 
 export const APP_INITIAL_STATE: IAppState = {
   authReducer: AUTH_INITIAL_STATE,

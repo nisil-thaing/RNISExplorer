@@ -1,7 +1,7 @@
 export {
   ILoginRequestAction,
   ILoginRequestSuccessAction,
-  ILoginRequestFailureAction,
+  IAuthFailureAction,
   AUTH_ACTION_TYPES,
   AUTH_ACTIONS
 } from './auth.action';

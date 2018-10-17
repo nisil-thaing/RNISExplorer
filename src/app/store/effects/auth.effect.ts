@@ -18,7 +18,10 @@ function* sendLoginRequest(action: ILoginRequestAction) {
     }));
     yield put(AUTH_ACTIONS.loginRequestSuccess(loginResult));
   } catch (err) {
-    yield put(AUTH_ACTIONS.loginRequestFailure(err));
+    yield put(AUTH_ACTIONS.authActionFailure({
+      action: AUTH_ACTION_TYPES.LOGIN_REQUEST,
+      errorDescription: err
+    }));
   }
 }
 

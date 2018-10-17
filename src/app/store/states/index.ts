@@ -8,6 +8,7 @@ export {
 } from './routing.state';
 export {
   IAppState,
+  IAppStateError,
   IAppAction,
   APP_INITIAL_STATE
 } from './app.state';

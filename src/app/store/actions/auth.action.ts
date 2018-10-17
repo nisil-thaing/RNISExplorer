@@ -1,5 +1,5 @@
 import { ILoginParams } from '../../services';
-import { IAppAction } from '../states';
+import { IAppAction, IAppStateError } from '../states';
 
 export interface ILoginRequestAction extends IAppAction {
   payload: {
@@ -13,16 +13,14 @@ export interface ILoginRequestSuccessAction extends IAppAction {
   }
 }
 
-export interface ILoginRequestFailureAction extends IAppAction {
-  payload: {
-    error: any
-  }
+export interface IAuthFailureAction extends IAppAction {
+  payload: IAppStateError
 }
 
 export const AUTH_ACTION_TYPES = {
   LOGIN_REQUEST: '[AUTH_ACTION_TYPES]_LOGIN_REQUEST',
   LOGIN_REQUEST_SUCCESS: '[AUTH_ACTION_TYPES]_LOGIN_REQUEST_SUCCESS',
-  LOGIN_REQUEST_FALURE: '[AUTH_ACTION_TYPES]_LOGIN_REQUEST_FAILURE'
+  AUTH_ACTION_FAILURE: '[AUTH_ACTION_TYPES]_AUTH_ACTION_FAILURE'
 }
 
 export const AUTH_ACTIONS = {
@@ -34,8 +32,8 @@ export const AUTH_ACTIONS = {
     type: AUTH_ACTION_TYPES.LOGIN_REQUEST_SUCCESS,
     payload: { userInfo }
   }),
-  loginRequestFailure: (error: any): ILoginRequestFailureAction => ({
-    type: AUTH_ACTION_TYPES.LOGIN_REQUEST_FALURE,
-    payload: { error }
+  authActionFailure: (data: IAppStateError): IAuthFailureAction => ({
+    type: AUTH_ACTION_TYPES.AUTH_ACTION_FAILURE,
+    payload: data
   })
 }
