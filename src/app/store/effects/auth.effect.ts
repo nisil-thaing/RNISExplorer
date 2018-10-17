@@ -1,12 +1,12 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 
 import { AuthService } from '../../services';
-import { AUTH_ACTIONS, AUTH_ACTION_TYPES, ROUTING_ACTIONS } from '../actions';
+import { AUTH_ACTIONS, AUTH_ACTION_TYPES, ROUTING_ACTIONS, ILoginRequestAction } from '../actions';
 import { ROUTES_NAMES } from '../../utils/routes.constant';
 
 const _authService = new AuthService();
 
-function* sendLoginRequest(action: any) {
+function* sendLoginRequest(action: ILoginRequestAction) {
   try {
     const loginResult = yield call(
       _authService.login,

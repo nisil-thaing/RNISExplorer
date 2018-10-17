@@ -9,7 +9,9 @@ export default function authReducer (
   state: IAuthInitialState = AUTH_INITIAL_STATE,
   action: IAppAction
 ): IAuthInitialState {
-  switch (action.type) {
+  const { type, payload } = action;
+
+  switch (type) {
     case AUTH_ACTION_TYPES.LOGIN_REQUEST:
       return {
         ...state,
@@ -24,7 +26,7 @@ export default function authReducer (
         ...state,
         isInProgress: false,
         isAuthenticated: true,
-        userData: action.payload.userInfo,
+        userData: payload.userInfo,
         error: null
       }
 
@@ -34,7 +36,7 @@ export default function authReducer (
         isInProgress: false,
         isAuthenticated: false,
         userData: null,
-        error: action.payload.error
+        error: payload.error
       }
 
     default: return state;
