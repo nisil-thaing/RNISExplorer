@@ -8,6 +8,7 @@ export {
 export {
   ISetTopLevelNavigatorAction,
   IRoutingNavigateAction,
+  IRoutingFailureAction,
   ROUTING_ACTION_TYPES,
   ROUTING_ACTIONS
 } from './routing.action';

@@ -1,20 +1,25 @@
 import { NavigationActions } from 'react-navigation';
-import { all, select, takeLatest } from 'redux-saga/effects';
+import { all, select, takeLatest, put } from 'redux-saga/effects';
 
 import {
   ROUTING_ACTION_TYPES,
-  IRoutingNavigateAction
+  IRoutingNavigateAction,
+  ROUTING_ACTIONS
 } from '../actions';
 import { ROUTING_SELECTOR } from '../selectors';
 
 function* navigate(action: IRoutingNavigateAction) {
-  const navigator = yield select(ROUTING_SELECTOR.navigatorSelector);
-
-  if (navigator && action.payload) {
+  try {
+    const navigator = yield select(ROUTING_SELECTOR.navigatorSelector);
     const options = action.payload;
     yield navigator.dispatch(
       NavigationActions.navigate(options)
     );
+  } catch(err) {
+    yield put(ROUTING_ACTIONS.routingActionFailure({
+      action: ROUTING_ACTION_TYPES.NAVIGATE,
+      errorDescription: err
+    }));
   }
 }
 

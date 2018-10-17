@@ -13,7 +13,7 @@ export interface IAppState {
 
 export interface IAppStateError {
   action: string,
-  errorDescription: any
+  errorDescription?: any
 }
 
 export interface IAppAction extends Action {

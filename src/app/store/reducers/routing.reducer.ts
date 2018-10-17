@@ -22,6 +22,11 @@ export default function routingReducer(
         ...state,
         ...payload
       };
+    case ROUTING_ACTION_TYPES.ROUTING_ACTION_FAILURE:
+      return {
+        ...state,
+        ...payload
+      }
     default: return state;
   }
 }

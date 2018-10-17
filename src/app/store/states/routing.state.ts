@@ -3,13 +3,15 @@ import {
   NavigationNavigateActionPayload
 } from 'react-navigation';
 
+import { IAppStateError } from '.';
+
 export interface IRoutingInitialState extends NavigationNavigateActionPayload {
   navigator: NavigationContainer,
-  error: any
+  error: IAppStateError
 }
 
 export const ROUTING_INITIAL_STATE: IRoutingInitialState = {
   navigator: <NavigationContainer>({}),
   routeName: '',
-  error: null
+  error: <IAppStateError>({})
 }
