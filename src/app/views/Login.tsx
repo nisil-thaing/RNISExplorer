@@ -4,7 +4,6 @@ import {
   Image,
   Text,
   TextInput,
-  StyleSheet,
   TouchableHighlight,
   ActivityIndicator
 } from 'react-native';
@@ -12,9 +11,11 @@ import { connect } from 'react-redux';
 
 import { IAppState } from '../store/states';
 import { AUTH_ACTIONS } from '../store/actions';
+import { LOGIN_PAGE_STYLES } from '../style-sheets';
 
 interface ILoginProps {
   isInProgress: boolean;
+  dispatch: Function;
 }
 
 interface ILoginState {
@@ -68,10 +69,11 @@ class Login extends Component<ILoginProps, ILoginState> {
     }))
   }
 
-  onSubmitLoginRequest = (email: string, password: string) => {
+  onSubmitLoginRequest = () => {
+    const { email, password } = this.state.loginData;
     if (!email || !password) return;
 
-    (this.props as any).dispatch(AUTH_ACTIONS.loginRequest({ email, password }));
+    this.props.dispatch(AUTH_ACTIONS.loginRequest({ email, password }));
   }
 
   render() {
@@ -80,38 +82,38 @@ class Login extends Component<ILoginProps, ILoginState> {
     const { email, password } = state.loginData;
 
     return (
-      <View style={ styles.container }>
-        <View style={ styles.heading }>
+      <View style={ LOGIN_PAGE_STYLES.container }>
+        <View style={ LOGIN_PAGE_STYLES.heading }>
           <Image
-            style={ styles.logo }
+            style={ LOGIN_PAGE_STYLES.logo }
             source={ require('../../assets/Octocat.png') } />
-          <Text style={ styles.headingTitle }>Github Browser</Text>
+          <Text style={ LOGIN_PAGE_STYLES.headingTitle }>Github Browser</Text>
         </View>
 
-        <View style={ styles.loginForm }>
+        <View style={ LOGIN_PAGE_STYLES.loginForm }>
           <TextInput
-            style={ styles.input }
+            style={ LOGIN_PAGE_STYLES.input }
             placeholder="Email"
             onChangeText={ (text: string) => this.onLoginFormTextChange('email', text) } />
           <TextInput
-            style={ styles.input }
+            style={ LOGIN_PAGE_STYLES.input }
             secureTextEntry={ true }
             placeholder="Password"
             onChangeText={ (text: string) => this.onLoginFormTextChange('password', text) } />
           <TouchableHighlight
             style={ [
-              styles.submit,
-              email && password ? {} : styles.disabled
+              LOGIN_PAGE_STYLES.submit,
+              email && password ? {} : LOGIN_PAGE_STYLES.disabled
             ] }
-            onPress={ () => this.onSubmitLoginRequest(email, password) }
+            onPress={ this.onSubmitLoginRequest }
             disabled={ !email || !password }>
-            <Text style={ styles.submitText }>Login</Text>
+            <Text style={ LOGIN_PAGE_STYLES.submitText }>Login</Text>
           </TouchableHighlight>
         </View>
 
         <View style={[
-          styles.loaderWrapper,
-          isInProgress ? {} : styles.hidden
+          LOGIN_PAGE_STYLES.loaderWrapper,
+          isInProgress ? {} : LOGIN_PAGE_STYLES.hidden
         ]}>
           <ActivityIndicator
             animating={ isInProgress }
@@ -122,75 +124,6 @@ class Login extends Component<ILoginProps, ILoginState> {
   }
 }
 
-const mapStateToProps = (state: IAppState) => ({...state.authReducer});
+const mapStateToProps = (state: IAppState) => state.authReducer;
 
 export default connect(mapStateToProps)(Login);
-
-const styles = StyleSheet.create({
-  hidden: {
-    display: 'none'
-  },
-  disabled: {
-    backgroundColor: 'grey'
-  },
-  container: {
-    position: 'relative',
-    flex: 1,
-    width: '100%'
-  },
-  heading: {
-    marginTop: 40,
-    alignItems: 'center'
-  },
-  logo: {
-    width: 66,
-    height: 55
-  },
-  headingTitle: {
-    fontSize: 30,
-    fontWeight: 'bold',
-    marginTop: 10
-  },
-  loginForm: {
-    flex: 1,
-    width: '100%',
-    marginTop: 20,
-    padding: 20,
-    alignItems: 'center'
-  },
-  input: {
-    width: '100%',
-    height: 50,
-    marginTop: 10,
-    paddingTop: 4,
-    paddingBottom: 4,
-    paddingLeft: 10,
-    paddingRight: 10,
-    fontSize: 18,
-    borderWidth: 1,
-    borderColor: '#48bbec',
-    borderRadius: 4
-  },
-  submit: {
-    width: '100%',
-    borderRadius: 4,
-    backgroundColor: '#48bbec',
-    padding: 10,
-    marginTop: 20,
-    alignItems: 'center'
-  },
-  submitText: {
-    fontSize: 18,
-    color: '#fff'
-  },
-  loaderWrapper: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: '100%',
-    height: '100%',
-    backgroundColor: 'rgba(0, 0, 0, 0.3)'
-  }
-});
