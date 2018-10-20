@@ -10,6 +10,7 @@ import React, { Component } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { NavigationContainer } from 'react-navigation';
 import { Provider } from 'react-redux';
+import SplashScreen from 'react-native-splash-screen';
 
 import configureStore from './src/app/store';
 import rootSaga from './src/app/store/effects';
@@ -24,6 +25,10 @@ export default class App extends Component<Props> {
     super(props);
     this._store = configureStore();
     this._store.runSaga(rootSaga);
+  }
+
+  componentDidMount() {
+    SplashScreen.hide();
   }
 
   setTopLevelNavigator(navigatorRef: NavigationContainer) {
