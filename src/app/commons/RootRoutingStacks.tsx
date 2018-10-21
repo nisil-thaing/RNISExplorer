@@ -13,6 +13,12 @@ export const RootRoutingStacks: NavigationContainer = createStackNavigator({
 }, {
   initialRouteName: ROUTES_NAMES.LoginRT,
   navigationOptions: {
-    header: null
+    headerStyle: {
+      backgroundColor: '#4f6d7a'
+    },
+    headerTintColor: '#fff',
+    headerTitleStyle: {
+      fontWeight: 'bold'
+    }
   }
 });

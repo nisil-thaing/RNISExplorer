@@ -49,6 +49,10 @@ class LoginForm implements ILoginForm {
 }
 
 class Login extends Component<ILoginProps, ILoginState> {
+  static navigationOptions = {
+    title: 'Login'
+  };
+
   constructor(props: ILoginProps) {
     super(props);
 
