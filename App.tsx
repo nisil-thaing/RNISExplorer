@@ -10,6 +10,7 @@ import React, { Component } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { NavigationContainer } from 'react-navigation';
 import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
 import SplashScreen from 'react-native-splash-screen';
 
 import configureStore from './src/app/store';
@@ -19,12 +20,13 @@ import { ROUTING_ACTIONS } from './src/app/store/actions';
 
 type Props = {};
 export default class App extends Component<Props> {
-  private _store: any;
+  private _storeConfig: any;
 
   constructor(props: Props) {
     super(props);
-    this._store = configureStore();
-    this._store.runSaga(rootSaga);
+
+    this._storeConfig = configureStore();
+    this._storeConfig.runSaga(rootSaga);
   }
 
   componentDidMount() {
@@ -32,17 +34,19 @@ export default class App extends Component<Props> {
   }
 
   setTopLevelNavigator(navigatorRef: NavigationContainer) {
-    this._store.dispatch(
+    this._storeConfig.store.dispatch(
       ROUTING_ACTIONS.setTopLevelNavigator(navigatorRef)
     );
   };
 
   render() {
     return (
-      <Provider store={ this._store }>
-        <View style={styles.container}>
-          <RootRoutingStacks ref={ this.setTopLevelNavigator.bind(this) } />
-        </View>
+      <Provider store={ this._storeConfig.store }>
+        <PersistGate loading={null} persistor={ this._storeConfig.persistor }>
+          <View style={styles.container}>
+            <RootRoutingStacks ref={ this.setTopLevelNavigator.bind(this) } />
+          </View>
+        </PersistGate>
       </Provider>
     );
   }
