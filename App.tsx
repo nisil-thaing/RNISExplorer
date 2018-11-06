@@ -11,7 +11,6 @@ import { StyleSheet, View } from 'react-native';
 import { NavigationContainer } from 'react-navigation';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
-import SplashScreen from 'react-native-splash-screen';
 
 import { configureStore } from './src/app/store';
 import rootSaga from './src/app/store/effects';
@@ -27,10 +26,6 @@ export default class App extends Component<Props> {
 
     this._storeConfig = configureStore();
     this._storeConfig.runSaga(rootSaga);
-  }
-
-  componentDidMount() {
-    SplashScreen.hide();
   }
 
   setTopLevelNavigator(navigatorRef: NavigationContainer) {

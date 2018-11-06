@@ -13,10 +13,10 @@ function* sendLoginRequest(action: ILoginRequestAction) {
       action.payload.params
     );
 
-    yield put(ROUTING_ACTIONS.navigate({
-      routeName: ROUTES_NAMES.HomeRT
-    }));
-    yield put(AUTH_ACTIONS.loginRequestSuccess(loginResult));
+    yield all([
+      put(ROUTING_ACTIONS.navigate({ routeName: ROUTES_NAMES.HomeRT })),
+      put(AUTH_ACTIONS.loginRequestSuccess(loginResult))
+    ]);
   } catch(errorDescription) {
     yield put(AUTH_ACTIONS.authActionFailure({
       action: AUTH_ACTION_TYPES.LOGIN_REQUEST,
@@ -31,18 +31,18 @@ function* checkTokenRequest() {
       _authService.checkToken
     );
 
-    yield put(ROUTING_ACTIONS.navigate({
-      routeName: ROUTES_NAMES.HomeRT
-    }));
-    yield put(AUTH_ACTIONS.checkingAuthInfoSuccess(checkTokenResult));
+    yield all([
+      put(ROUTING_ACTIONS.navigate({ routeName: ROUTES_NAMES.HomeRT })),
+      put(AUTH_ACTIONS.checkingAuthInfoSuccess(checkTokenResult))
+    ]);
   } catch(errorDescription) {
-    yield put(ROUTING_ACTIONS.navigate({
-      routeName: ROUTES_NAMES.LoginRT
-    }));
-    yield put(AUTH_ACTIONS.authActionFailure({
-      action: AUTH_ACTION_TYPES.CHECKING_AUTH_INFO,
-      errorDescription
-    }))
+    yield all([
+      put(ROUTING_ACTIONS.navigate({ routeName: ROUTES_NAMES.LoginRT })),
+      put(AUTH_ACTIONS.authActionFailure({
+        action: AUTH_ACTION_TYPES.CHECKING_AUTH_INFO,
+        errorDescription
+      }))
+    ])
   }
 }
 
