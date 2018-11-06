@@ -30,11 +30,27 @@ export default function authReducer (
         userData: payload.userInfo
       }
 
+    case AUTH_ACTION_TYPES.CHECKING_AUTH_INFO:
+      return {
+        ...state,
+        isInProgress: true,
+        error: <IAppStateError>({})
+      };
+
+    case AUTH_ACTION_TYPES.CHECKING_AUTH_INFO_SUCCESS:
+      return {
+        ...state,
+        isInProgress: false,
+        isAuthenticated: true,
+        userData: payload
+      };
+
     case AUTH_ACTION_TYPES.AUTH_ACTION_FAILURE:
       return {
         ...state,
         isInProgress: false,
         isAuthenticated: false,
+        userData: null,
         error: payload
       }
 

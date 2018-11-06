@@ -6,20 +6,26 @@ import { logger } from 'redux-logger';
 import rootReducer from './reducers';
 import { IAppState, APP_INITIAL_STATE } from './states';
 
-export default function configureStore(
+let _store: any = null;
+
+export function configureStore(
   initialState: IAppState = APP_INITIAL_STATE
 ) {
   const sagaMiddleware = createSagaMiddleware();
-  const store = createStore(
+  _store = createStore(
     rootReducer,
     initialState,
     applyMiddleware(...[sagaMiddleware, logger])
   );
-  const persistor = persistStore(store)
+  const persistor = persistStore(_store)
 
   return ({
-    store,
+    store: _store,
     persistor,
     runSaga: sagaMiddleware.run
   });
+}
+
+export function getStore() {
+  return _store;
 }

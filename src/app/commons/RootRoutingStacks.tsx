@@ -1,9 +1,13 @@
-import { createStackNavigator, NavigationContainer } from 'react-navigation';
+import {
+  createStackNavigator,
+  createSwitchNavigator,
+  NavigationContainer
+} from 'react-navigation';
 
 import { ROUTES_NAMES } from '../utils/routes.constant';
 import * as SCREEN from '../views';
 
-export const RootRoutingStacks: NavigationContainer = createStackNavigator({
+/* export const RootRoutingStacks: NavigationContainer = createStackNavigator({
   [ROUTES_NAMES.HomeRT]: {
     screen: SCREEN.Home
   },
@@ -21,4 +25,26 @@ export const RootRoutingStacks: NavigationContainer = createStackNavigator({
       fontWeight: 'bold'
     }
   }
+}); */
+
+const AppStack = createStackNavigator({
+  [ROUTES_NAMES.HomeRT]: {
+    screen: SCREEN.Home
+  },
 });
+const AuthStack = createStackNavigator({
+  [ROUTES_NAMES.LoginRT]: {
+    screen: SCREEN.Login
+  }
+});
+
+export const RootRoutingStacks: NavigationContainer = createSwitchNavigator(
+  {
+    AuthLoading: SCREEN.AuthLoading,
+    App: AppStack,
+    Auth: AuthStack,
+  },
+  {
+    initialRouteName: 'AuthLoading',
+  }
+);

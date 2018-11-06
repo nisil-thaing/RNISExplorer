@@ -12,6 +12,7 @@ export class AuthService {
     this._apiClient = new ApiClient();
 
     this.login = this.login.bind(this);
+    this.checkToken = this.checkToken.bind(this);
   }
 
   async login(params?: ILoginParams) {
@@ -22,6 +23,16 @@ export class AuthService {
     try {
       const result = await this._apiClient
                       .post('/auth/login', params);
+      return result;
+    } catch(err) {
+      throw new Error(err);
+    }
+  }
+
+  async checkToken() {
+    try {
+      const result = await this._apiClient
+                      .get('/auth/me', {});
       return result;
     } catch(err) {
       throw new Error(err);

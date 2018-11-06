@@ -1,4 +1,4 @@
-import { call, put, takeLatest } from 'redux-saga/effects';
+import { call, put, takeLatest, all } from 'redux-saga/effects';
 
 import { AuthService } from '../../services';
 import { AUTH_ACTIONS, AUTH_ACTION_TYPES, ROUTING_ACTIONS, ILoginRequestAction } from '../actions';
@@ -17,14 +17,38 @@ function* sendLoginRequest(action: ILoginRequestAction) {
       routeName: ROUTES_NAMES.HomeRT
     }));
     yield put(AUTH_ACTIONS.loginRequestSuccess(loginResult));
-  } catch (err) {
+  } catch(errorDescription) {
     yield put(AUTH_ACTIONS.authActionFailure({
       action: AUTH_ACTION_TYPES.LOGIN_REQUEST,
-      errorDescription: err
+      errorDescription
     }));
   }
 }
 
+function* checkTokenRequest() {
+  try {
+    const checkTokenResult = yield call(
+      _authService.checkToken
+    );
+
+    yield put(ROUTING_ACTIONS.navigate({
+      routeName: ROUTES_NAMES.HomeRT
+    }));
+    yield put(AUTH_ACTIONS.checkingAuthInfoSuccess(checkTokenResult));
+  } catch(errorDescription) {
+    yield put(ROUTING_ACTIONS.navigate({
+      routeName: ROUTES_NAMES.LoginRT
+    }));
+    yield put(AUTH_ACTIONS.authActionFailure({
+      action: AUTH_ACTION_TYPES.CHECKING_AUTH_INFO,
+      errorDescription
+    }))
+  }
+}
+
 export function* login$() {
-  yield takeLatest(AUTH_ACTION_TYPES.LOGIN_REQUEST, sendLoginRequest);
+  yield all([
+    takeLatest(AUTH_ACTION_TYPES.LOGIN_REQUEST, sendLoginRequest),
+    takeLatest(AUTH_ACTION_TYPES.CHECKING_AUTH_INFO, checkTokenRequest)
+  ]);
 }

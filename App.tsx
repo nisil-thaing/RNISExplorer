@@ -13,7 +13,7 @@ import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import SplashScreen from 'react-native-splash-screen';
 
-import configureStore from './src/app/store';
+import { configureStore } from './src/app/store';
 import rootSaga from './src/app/store/effects';
 import { RootRoutingStacks } from './src/app/commons';
 import { ROUTING_ACTIONS } from './src/app/store/actions';

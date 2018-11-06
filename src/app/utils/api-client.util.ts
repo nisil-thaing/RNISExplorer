@@ -4,6 +4,8 @@ import axios, {
   AxiosResponse
 } from 'axios';
 
+import httpInterceptor from './api-interceptor.util';
+
 const DEFAULT_CONFIG: AxiosRequestConfig = {
   baseURL: 'http://localhost:4040/api/',
   timeout: 1000
@@ -14,6 +16,7 @@ export default class ApiClient {
 
   constructor() {
     this._axiosInstance = axios.create(DEFAULT_CONFIG);
+    this._axiosInstance.interceptors.request.use(httpInterceptor);
 
     this.get = this.get.bind(this);
     this.post = this.post.bind(this);
