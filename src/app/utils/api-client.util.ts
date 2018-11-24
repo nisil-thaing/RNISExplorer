@@ -7,7 +7,7 @@ import axios, {
 import httpInterceptor from './api-interceptor.util';
 
 const DEFAULT_CONFIG: AxiosRequestConfig = {
-  baseURL: 'http://localhost:4040/api/',
+  baseURL: 'https://fast-escarpment-11974.herokuapp.com/api/',
   timeout: 1000
 }
 
