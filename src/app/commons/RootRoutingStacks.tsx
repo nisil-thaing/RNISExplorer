@@ -7,7 +7,6 @@ import {
 import { ROUTES_NAMES } from '../utils/routes.constant';
 import * as SCREEN from '../views';
 
-
 const AppStack = createStackNavigator({
   [ROUTES_NAMES.HomeRT]: {
     screen: SCREEN.Home
