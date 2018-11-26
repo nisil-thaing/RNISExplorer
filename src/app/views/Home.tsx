@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 import { View, Image, Dimensions } from 'react-native';
 
 class Home extends Component {
-  static navigationOptions = {
-    header: null
-  };
-
   render() {
     const windowWidth = Dimensions.get('window').width;
 

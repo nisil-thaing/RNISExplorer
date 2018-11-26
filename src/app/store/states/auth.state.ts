@@ -1,4 +1,4 @@
-import { IAppStateError } from '.';
+import { IAppStateError } from './app.state';
 
 export interface IAuthInitialState {
   isInProgress: boolean,

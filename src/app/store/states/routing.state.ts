@@ -2,8 +2,7 @@ import {
   NavigationContainer,
   NavigationNavigateActionPayload
 } from 'react-navigation';
-
-import { IAppStateError } from '.';
+import { IAppStateError } from './app.state';
 
 export interface IRoutingInitialState extends NavigationNavigateActionPayload {
   navigator: NavigationContainer,

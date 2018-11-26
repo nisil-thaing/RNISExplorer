@@ -1,10 +1,12 @@
 import { Action } from 'redux';
 import {
   IAuthInitialState,
+  AUTH_INITIAL_STATE
+} from './auth.state';
+import {
   IRoutingInitialState,
-  AUTH_INITIAL_STATE,
   ROUTING_INITIAL_STATE
-} from '.';
+} from './routing.state';
 
 export interface IAppState {
   authReducer: IAuthInitialState,
