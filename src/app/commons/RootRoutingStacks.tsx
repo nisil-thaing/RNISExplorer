@@ -12,6 +12,9 @@ const AppStack = createStackNavigator({
   [ROUTES_NAMES.HomeRT]: {
     screen: SCREEN.Home
   },
+  [ROUTES_NAMES.NewsFeedRT]: {
+    screen: SCREEN.NewsFeed
+  }
 }, {
   navigationOptions: {
     header: MainHeader
