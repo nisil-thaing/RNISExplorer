@@ -10,17 +10,13 @@ const infoWrapperWidth = windowWidth - AVATAR_WIDTH - 3 * PADDING;
 
 export const CARD_AUTHOR_STYLES = StyleSheet.create({
   container: {
-    flex: 1,
     flexDirection: 'row',
-    paddingLeft: PADDING,
-    paddingRight: PADDING,
+    flexWrap: 'wrap',
+    padding: PADDING,
     backgroundColor: COLORS.WHITE,
   },
   avatarWrapper: {
-    flex: 1,
-    flexDirection: 'row',
-    minWidth: AVATAR_WIDTH,
-    minHeight: AVATAR_WIDTH
+    flexDirection: 'row'
   },
   avatarPhoto: {
     width: AVATAR_WIDTH,
@@ -30,26 +26,26 @@ export const CARD_AUTHOR_STYLES = StyleSheet.create({
     borderRadius: avatarRadius
   },
   contentRight: {
-    flex: 1,
-    minWidth: infoWrapperWidth,
-    minHeight: AVATAR_WIDTH
+    width: infoWrapperWidth,
+    marginLeft: PADDING
   },
   infoWrapper: {
     flexDirection: 'row'
   },
   timestamp: {
-    flexDirection: 'row',
-    width: infoWrapperWidth
+    flexDirection: 'row'
   },
   boldItem: {
     fontWeight: 'bold'
   },
   titleItem: {
     fontSize: 16,
+    lineHeight: 23,
     flexWrap: 'wrap'
   },
   timestampText: {
     fontSize: 12,
+    lineHeight: 17,
     flexWrap: 'wrap'
   }
 })

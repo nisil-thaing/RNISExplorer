@@ -7,7 +7,7 @@ export const NEW_STATUS_INPUT_STYLES = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: COLORS.SEPARATE_LINE,
     padding: 10,
-    minHeight: 60
+    height: 60
   },
   inputWrapper: {
     flex: 1,

@@ -7,9 +7,7 @@ import CardAuthor from './CardAuthor';
 function StreamCard() {
   return (
     <View style={ STREAM_CARD_STYLES.container }>
-      <View style={{ marginTop: 10 }}>
-        <CardAuthor></CardAuthor>
-      </View>
+      <CardAuthor></CardAuthor>
     </View>
   );
 }
