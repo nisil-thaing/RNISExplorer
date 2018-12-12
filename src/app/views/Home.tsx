@@ -7,7 +7,7 @@ import {
 
 import { HOME_PAGE_STYLES } from '../style-sheets/Home.style';
 
-class Home extends Component {
+export default class Home extends Component {
   render() {
     return (
       <View style={ HOME_PAGE_STYLES.container }>
@@ -30,5 +30,3 @@ class Home extends Component {
     )
   }
 }
-
-export default Home;

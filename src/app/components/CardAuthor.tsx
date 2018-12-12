@@ -1,8 +1,10 @@
 import React from 'react';
 import { View, Image, Text } from 'react-native';
-import { CARD_AUTHOR_STYLES } from '../style-sheets';
+import { Icon } from 'react-native-elements';
 
-function CardAuthor() {
+import { CARD_AUTHOR_STYLES, COLORS } from '../style-sheets';
+
+export default function CardAuthor() {
   return (
     <View style={ CARD_AUTHOR_STYLES.container }>
       <View
@@ -22,14 +24,20 @@ function CardAuthor() {
           </Text>
         </View>
         <View style={ CARD_AUTHOR_STYLES.timestamp }>
-          <Text style={ CARD_AUTHOR_STYLES.timestampText }>
-            Yesterday at 11:09 AM
-            <Text> . </Text>
-          </Text>
+          <Text style={ CARD_AUTHOR_STYLES.timestampText }>Yesterday at 11:09 AM</Text>
+          <Icon
+            iconStyle={{ paddingLeft: 5, paddingRight: 5 }}
+            name='primitive-dot'
+            type='octicon'
+            size={ 4 }
+            color={ COLORS.BLACK } />
+          <Icon
+            name='globe'
+            type='font-awesome'
+            size={ 18 }
+            color={ COLORS.SEPARATE_LINE } />
         </View>
       </View>
     </View>
   );
 }
-
-export default CardAuthor

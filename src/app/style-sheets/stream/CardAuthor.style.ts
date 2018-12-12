@@ -40,12 +40,11 @@ export const CARD_AUTHOR_STYLES = StyleSheet.create({
   },
   titleItem: {
     fontSize: 16,
-    lineHeight: 23,
+    lineHeight: 24,
     flexWrap: 'wrap'
   },
   timestampText: {
     fontSize: 12,
-    lineHeight: 17,
-    flexWrap: 'wrap'
+    lineHeight: 18
   }
 })

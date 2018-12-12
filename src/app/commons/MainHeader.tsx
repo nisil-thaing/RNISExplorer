@@ -4,7 +4,7 @@ import { Icon } from 'react-native-elements';
 
 import { MAIN_HEADER_STYLES, COLORS } from '../style-sheets';
 
-export default function Header(props: any) {
+export default function Header() {
   return (
     <View style={ MAIN_HEADER_STYLES.container }>
       <View style={ MAIN_HEADER_STYLES.mainWrapper }>

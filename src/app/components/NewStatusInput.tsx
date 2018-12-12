@@ -3,7 +3,7 @@ import { View, Image, Text } from 'react-native';
 
 import { NEW_STATUS_INPUT_STYLES } from '../style-sheets';
 
-function NewStatusInput() {
+export default function NewStatusInput() {
   return (
     <View style={ NEW_STATUS_INPUT_STYLES.container }>
       <View
@@ -16,5 +16,3 @@ function NewStatusInput() {
     </View>
   );
 }
-
-export default NewStatusInput;
