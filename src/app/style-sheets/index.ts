@@ -4,3 +4,6 @@ export { MAIN_HEADER_STYLES } from './MainHeader.style';
 export { HOME_PAGE_STYLES } from './Home.style';
 export { NEWS_FEED_PAGE_STYLES } from './news-feed';
 export { NEW_STATUS_INPUT_STYLES } from './news-feed';
+export { STREAM_COMPONENT_STYLES } from './stream';
+export { STREAM_CARD_STYLES } from './stream';
+export { CARD_AUTHOR_STYLES } from './stream';
