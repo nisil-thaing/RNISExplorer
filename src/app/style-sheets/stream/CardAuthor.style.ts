@@ -12,8 +12,8 @@ export const CARD_AUTHOR_STYLES = StyleSheet.create({
   container: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    padding: PADDING,
-    backgroundColor: COLORS.WHITE,
+    paddingLeft: PADDING,
+    paddingRight: PADDING
   },
   avatarWrapper: {
     flexDirection: 'row'
