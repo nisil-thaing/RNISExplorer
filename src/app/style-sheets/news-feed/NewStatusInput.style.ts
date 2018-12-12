@@ -6,12 +6,11 @@ export const NEW_STATUS_INPUT_STYLES = StyleSheet.create({
     backgroundColor: COLORS.WHITE,
     borderBottomWidth: 1,
     borderBottomColor: COLORS.SEPARATE_LINE,
-    padding: 10,
-    height: 60
+    padding: 10
   },
   inputWrapper: {
-    flex: 1,
-    flexDirection: 'row'
+    flexDirection: 'row',
+    flexWrap: 'wrap'
   },
   avatarPhoto: {
     width: 40,
