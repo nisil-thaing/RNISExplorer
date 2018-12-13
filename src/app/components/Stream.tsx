@@ -8,12 +8,12 @@ export default function Stream() {
   return (
     <View style={ STREAM_COMPONENT_STYLES.container }>
       <StreamCard></StreamCard>
-      <StreamCard style={{ marginTop: 5 }}></StreamCard>
-      <StreamCard style={{ marginTop: 5 }}></StreamCard>
-      <StreamCard style={{ marginTop: 5 }}></StreamCard>
-      <StreamCard style={{ marginTop: 5 }}></StreamCard>
-      <StreamCard style={{ marginTop: 5 }}></StreamCard>
-      <StreamCard style={{ marginTop: 5 }}></StreamCard>
+      <StreamCard style={{ marginTop: 10 }}></StreamCard>
+      <StreamCard style={{ marginTop: 10 }}></StreamCard>
+      <StreamCard style={{ marginTop: 10 }}></StreamCard>
+      <StreamCard style={{ marginTop: 10 }}></StreamCard>
+      <StreamCard style={{ marginTop: 10 }}></StreamCard>
+      <StreamCard style={{ marginTop: 10 }}></StreamCard>
     </View>
   );
 }

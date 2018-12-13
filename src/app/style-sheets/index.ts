@@ -8,3 +8,4 @@ export { STREAM_COMPONENT_STYLES } from './stream';
 export { STREAM_CARD_STYLES } from './stream';
 export { CARD_AUTHOR_STYLES } from './stream';
 export { CARD_CONTENT_STYLES } from './stream';
+export { SOCIAL_ACTIVITY_STYLES } from './stream';

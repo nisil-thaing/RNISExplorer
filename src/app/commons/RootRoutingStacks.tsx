@@ -16,6 +16,7 @@ const AppStack = createStackNavigator({
     screen: SCREEN.NewsFeed
   }
 }, {
+  initialRouteName: ROUTES_NAMES.NewsFeedRT,
   navigationOptions: {
     header: MainHeader
   }

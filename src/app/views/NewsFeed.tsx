@@ -9,7 +9,7 @@ export default class NewsFeed extends Component {
     return (
       <ScrollView style={ NEWS_FEED_PAGE_STYLES.container }>
         <NewStatusInput></NewStatusInput>
-        <View style={{ marginTop: 5 }}>
+        <View style={{ marginTop: 10 }}>
           <Stream></Stream>
         </View>
       </ScrollView>
