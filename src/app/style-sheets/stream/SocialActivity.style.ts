@@ -6,14 +6,28 @@ export const SOCIAL_ACTIVITY_STYLES = StyleSheet.create({
     paddingLeft: 10,
     paddingRight: 10
   },
-  buttonsWrapper: {
-    flex: 1,
+  socialStatistic: {
     flexDirection: 'row',
-    borderWidth: 1,
-    borderColor: COLORS.SEPARATE_LINE,
-    borderLeftWidth: 0,
-    borderRightWidth: 0,
-    marginTop: 10
+    marginBottom: 10
+  },
+  socialStatReactionsWrapper: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    alignItems: 'center'
+  },
+  statisticIconWrapper: {
+    width: 20,
+    height: 20,
+    borderRadius: 10
+  },
+  statisticIcon: {
+    fontSize: 12,
+    color: COLORS.WHITE
+  },
+  buttonsWrapper: {
+    flexDirection: 'row',
+    borderTopWidth: 1,
+    borderTopColor: COLORS.SEPARATE_LINE
   },
   actionButton: {
     flex: 1,
@@ -25,7 +39,6 @@ export const SOCIAL_ACTIVITY_STYLES = StyleSheet.create({
   buttonIcon: {
     lineHeight: 36,
     height: 36,
-    width: 36,
-    textAlign: 'center'
+    marginRight: 5
   }
 });
