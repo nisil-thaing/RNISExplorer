@@ -589,9 +589,9 @@
     "@types/prop-types" "*"
     "@types/react" "*"
 
-"@types/react-navigation@^2.13.4":
-  version "2.13.5"
-  resolved "https://registry.yarnpkg.com/@types/react-navigation/-/react-navigation-2.13.5.tgz#7bb1712db3566bf856df69b82463ebf85f6b2d87"
+"@types/react-navigation@^2.13.8":
+  version "2.13.8"
+  resolved "https://registry.yarnpkg.com/@types/react-navigation/-/react-navigation-2.13.8.tgz#fee0a225dcb4b43e0ccc9eb23b2ef88de83fef5e"
   dependencies:
     "@types/react" "*"
     "@types/react-native" "*"

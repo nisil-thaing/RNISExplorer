@@ -14,7 +14,7 @@ function* sendLoginRequest(action: ILoginRequestAction) {
     );
 
     yield all([
-      put(ROUTING_ACTIONS.navigate({ routeName: ROUTES_NAMES.HomeRT })),
+      put(ROUTING_ACTIONS.navigate({ routeName: ROUTES_NAMES.NewsFeedRT })),
       put(AUTH_ACTIONS.loginRequestSuccess(loginResult))
     ]);
   } catch(errorDescription) {
@@ -32,7 +32,7 @@ function* checkTokenRequest() {
     );
 
     yield all([
-      put(ROUTING_ACTIONS.navigate({ routeName: ROUTES_NAMES.HomeRT })),
+      put(ROUTING_ACTIONS.navigate({ routeName: ROUTES_NAMES.NewsFeedRT })),
       put(AUTH_ACTIONS.checkingAuthInfoSuccess(checkTokenResult))
     ]);
   } catch(errorDescription) {
