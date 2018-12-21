@@ -21,6 +21,7 @@ const AppStack = createStackNavigator({
     header: MainHeader
   }
 });
+
 const AuthStack = createStackNavigator({
   [ROUTES_NAMES.LoginRT]: {
     screen: SCREEN.Login

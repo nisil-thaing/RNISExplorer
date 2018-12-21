@@ -1,3 +1,7 @@
 import { RootRoutingStacks } from './RootRoutingStacks';
+import MainFooter from './MainFooter';
 
-export { RootRoutingStacks };
+export {
+  RootRoutingStacks,
+  MainFooter
+};

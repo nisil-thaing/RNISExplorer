@@ -8,13 +8,15 @@
 
 import React, { Component } from 'react';
 import { StyleSheet, View } from 'react-native';
-import { NavigationContainer } from 'react-navigation';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 
 import { configureStore } from './src/app/store';
 import rootSaga from './src/app/store/effects';
-import { RootRoutingStacks } from './src/app/commons';
+import {
+  RootRoutingStacks,
+  MainFooter
+} from './src/app/commons';
 import { ROUTING_ACTIONS } from './src/app/store/actions';
 
 type Props = {};
@@ -28,7 +30,7 @@ export default class App extends Component<Props> {
     this._storeConfig.runSaga(rootSaga);
   }
 
-  setTopLevelNavigator(navigatorRef: NavigationContainer) {
+  setTopLevelNavigator(navigatorRef: any) {
     this._storeConfig.store.dispatch(
       ROUTING_ACTIONS.setTopLevelNavigator(navigatorRef)
     );
@@ -40,6 +42,7 @@ export default class App extends Component<Props> {
         <PersistGate loading={null} persistor={ this._storeConfig.persistor }>
           <View style={styles.container}>
             <RootRoutingStacks ref={ this.setTopLevelNavigator.bind(this) } />
+            <MainFooter></MainFooter>
           </View>
         </PersistGate>
       </Provider>
