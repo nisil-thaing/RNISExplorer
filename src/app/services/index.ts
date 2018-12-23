@@ -1,1 +1,0 @@
-export { ILoginParams, AuthService } from './auth.service';
