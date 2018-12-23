@@ -1,10 +1,5 @@
 import ApiClient from '../utils/api-client.util';
 
-/* export interface ILoginParams {
-  email: string,
-  password: string
-} */
-
 export class AuthService {
   _apiClient;
 

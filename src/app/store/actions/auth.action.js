@@ -1,26 +1,3 @@
-import { IAppAction, IAppStateError } from '../states';
-
-// export interface ILoginRequestAction extends IAppAction {
-//   payload: { params: any }
-// }
-
-// export interface ILoginRequestSuccessAction extends IAppAction {
-//   payload: {
-//     userInfo: any
-//   }
-// }
-
-// export interface IAuthFailureAction extends IAppAction {
-//   payload: IAppStateError
-// }
-
-// export interface ICheckingAuthTokenSuccessAction extends IAppAction {
-//   payload: {
-//     user: any,
-//     token: string
-//   }
-// }
-
 export const AUTH_ACTION_TYPES = {
   LOGIN_REQUEST: '[AUTH_ACTION_TYPES]_LOGIN_REQUEST',
   LOGIN_REQUEST_SUCCESS: '[AUTH_ACTION_TYPES]_LOGIN_REQUEST_SUCCESS',

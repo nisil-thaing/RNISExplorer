@@ -1,17 +1,3 @@
-/* export interface ISetTopLevelNavigatorAction extends IAppAction {
-  payload: {
-    navigator: NavigationContainer
-  }
-}
-
-export interface IRoutingNavigateAction extends IAppAction {
-  payload: NavigationNavigateActionPayload
-}
-
-export interface IRoutingFailureAction extends IAppAction {
-  payload: IAppStateError
-} */
-
 export const ROUTING_ACTION_TYPES = {
   SET_TOP_LEVEL_NAVIGATOR: '[ROUTING_ACTION_TYPES]_SET_TOP_LEVEL_NAVIGATOR',
   NAVIGATE: '[ROUTING_ACTION_TYPES]_NAVIGATE',

@@ -13,20 +13,6 @@ import { connect } from 'react-redux';
 import { AUTH_ACTIONS } from '../store/actions';
 import { LOGIN_PAGE_STYLES } from '../style-sheets';
 
-/* interface ILoginProps {
-  isInProgress: boolean;
-  dispatch: Function;
-}
-
-interface ILoginState {
-  loginData: ILoginForm
-}
-
-interface ILoginForm {
-  email: string,
-  password: string
-} */
-
 class LoginForm {
   _email = '';
   _password = '';
