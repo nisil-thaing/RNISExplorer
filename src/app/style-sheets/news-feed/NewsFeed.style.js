@@ -7,4 +7,4 @@ export const NEWS_FEED_PAGE_STYLES = StyleSheet.create({
     flex: 1,
     backgroundColor: COLORS.SEPARATE_LINE
   }
-})
+});

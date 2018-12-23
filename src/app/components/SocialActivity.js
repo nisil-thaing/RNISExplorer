@@ -57,4 +57,4 @@ export default function SocialActivity(props) {
 
 SocialActivity.propTypes = {
   style: PropTypes.object
-}
+};

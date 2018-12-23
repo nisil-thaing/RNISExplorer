@@ -47,4 +47,4 @@ export const CARD_AUTHOR_STYLES = StyleSheet.create({
     fontSize: 12,
     lineHeight: 18
   }
-})
+});

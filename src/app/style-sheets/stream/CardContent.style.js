@@ -22,4 +22,4 @@ export const CARD_CONTENT_STYLES = StyleSheet.create({
     paddingLeft: 10,
     paddingRight: 10
   }
-})
+});

@@ -25,4 +25,4 @@ export const NEW_STATUS_INPUT_STYLES = StyleSheet.create({
     lineHeight: 40,
     marginLeft: 10
   }
-})
+});

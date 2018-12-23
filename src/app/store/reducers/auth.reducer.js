@@ -12,7 +12,7 @@ export default function authReducer(state = AUTH_INITIAL_STATE, action) {
         isAuthenticated: false,
         userData: null,
         error: {}
-      }
+      };
 
     case AUTH_ACTION_TYPES.LOGIN_REQUEST_SUCCESS:
       return {
@@ -20,7 +20,7 @@ export default function authReducer(state = AUTH_INITIAL_STATE, action) {
         isInProgress: false,
         isAuthenticated: true,
         userData: (payload && payload.userInfo) || null
-      }
+      };
 
     case AUTH_ACTION_TYPES.CHECKING_AUTH_INFO:
       return {
@@ -44,7 +44,7 @@ export default function authReducer(state = AUTH_INITIAL_STATE, action) {
         isAuthenticated: false,
         userData: null,
         error: payload
-      }
+      };
 
     default: return state;
   }

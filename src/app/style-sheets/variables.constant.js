@@ -5,4 +5,4 @@ export const COLORS = {
   SEPARATE_LINE: '#c3c3c3',
   WHITE: '#fff',
   BLACK: '#333'
-}
+};

@@ -48,7 +48,7 @@ class Login extends Component {
 
     this.state = {
       loginData: new LoginForm()
-    }
+    };
   }
 
   onLoginFormTextChange = (field, value) => {
@@ -60,7 +60,7 @@ class Login extends Component {
         ...(prevState.loginData),
         [field]: value
       }
-    }))
+    }));
   }
 
   onSubmitLoginRequest = () => {

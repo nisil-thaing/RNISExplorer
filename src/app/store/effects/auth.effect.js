@@ -46,7 +46,7 @@ function* checkTokenRequest() {
         action: AUTH_ACTION_TYPES.CHECKING_AUTH_INFO,
         errorDescription
       }))
-    ])
+    ]);
   }
 }
 

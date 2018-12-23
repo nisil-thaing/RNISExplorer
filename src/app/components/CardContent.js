@@ -23,4 +23,4 @@ export default function CardContent(props) {
 
 CardContent.propTypes = {
   style: PropTypes.object
-}
+};

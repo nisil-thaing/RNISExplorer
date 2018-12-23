@@ -3,4 +3,4 @@ export const AUTH_INITIAL_STATE = {
   isAuthenticated: false,
   userData: null,
   error: {}
-}
+};

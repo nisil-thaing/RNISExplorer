@@ -4,7 +4,7 @@ export const AUTH_ACTION_TYPES = {
   CHECKING_AUTH_INFO: '[AUTH_ACTION_TYPES]_CHECKING_AUTH_INFO',
   CHECKING_AUTH_INFO_SUCCESS: '[AUTH_ACTION_TYPES]_CHECKING_AUTH_INFO_SUCCESS',
   AUTH_ACTION_FAILURE: '[AUTH_ACTION_TYPES]_AUTH_ACTION_FAILURE',
-}
+};
 
 export const AUTH_ACTIONS = {
   loginRequest: params => ({
@@ -23,10 +23,10 @@ export const AUTH_ACTIONS = {
     return {
       type: AUTH_ACTION_TYPES.CHECKING_AUTH_INFO_SUCCESS,
       payload: { user, token }
-    }
+    };
   },
   authActionFailure: data => ({
     type: AUTH_ACTION_TYPES.AUTH_ACTION_FAILURE,
     payload: data
   })
-}
+};

@@ -7,4 +7,4 @@ export const STREAM_CARD_STYLES = StyleSheet.create({
     paddingTop: 10,
     backgroundColor: COLORS.WHITE
   }
-})
+});

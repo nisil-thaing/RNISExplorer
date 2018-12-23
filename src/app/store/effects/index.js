@@ -8,5 +8,5 @@ export default function* rootSaga() {
     // add all saga watchers here
     fork(login$),
     fork(routing$)
-  ])
+  ]);
 }

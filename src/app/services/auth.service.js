@@ -17,7 +17,7 @@ export class AuthService {
 
     try {
       const result = await this._apiClient
-                      .post('/auth/login', params);
+        .post('/auth/login', params);
       return result;
     } catch(err) {
       throw new Error(err);
@@ -27,7 +27,7 @@ export class AuthService {
   async checkToken() {
     try {
       const result = await this._apiClient
-                      .get('/auth/me', {});
+        .get('/auth/me', {});
       return result;
     } catch(err) {
       throw new Error(err);

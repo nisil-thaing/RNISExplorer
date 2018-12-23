@@ -5,7 +5,7 @@ import httpInterceptor from './api-interceptor.util';
 const DEFAULT_CONFIG = {
   baseURL: 'https://fast-escarpment-11974.herokuapp.com/api/',
   timeout: 1000
-}
+};
 
 export default class ApiClient {
   _axiosInstance;
@@ -41,7 +41,7 @@ export default class ApiClient {
   async post(url, data = {}, config = {}) {
     try {
       const result = await this._axiosInstance
-                            .post(url, data, config);
+        .post(url, data, config);
 
       const resData = this.getDataFromResponse(result);
 

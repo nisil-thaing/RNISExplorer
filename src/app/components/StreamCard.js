@@ -19,4 +19,4 @@ export default function StreamCard(props) {
 
 StreamCard.propTypes = {
   style: PropTypes.object
-}
+};

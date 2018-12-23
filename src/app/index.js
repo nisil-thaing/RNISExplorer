@@ -33,7 +33,7 @@ export default class App extends Component {
     this._storeConfig.store.dispatch(
       ROUTING_ACTIONS.setTopLevelNavigator(navigatorRef)
     );
-  };
+  }
 
   render() {
     return (

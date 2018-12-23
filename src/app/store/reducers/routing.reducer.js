@@ -19,7 +19,7 @@ export default function routingReducer(state = ROUTING_INITIAL_STATE, action) {
       return {
         ...state,
         ...payload
-      }
+      };
     default: return state;
   }
 }

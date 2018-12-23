@@ -17,7 +17,7 @@ export function configureStore(
     initialState,
     applyMiddleware(...[sagaMiddleware, logger])
   );
-  const persistor = persistStore(_store)
+  const persistor = persistStore(_store);
 
   return ({
     store: _store,
