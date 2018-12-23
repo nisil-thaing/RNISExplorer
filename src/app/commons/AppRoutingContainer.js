@@ -17,7 +17,7 @@ const AppStack = createStackNavigator({
   }
 }, {
   initialRouteName: ROUTES_NAMES.NewsFeedRT,
-  navigationOptions: {
+  defaultNavigationOptions: {
     header: MainHeader
   }
 });
@@ -26,8 +26,6 @@ const AuthStack = createStackNavigator({
   [ROUTES_NAMES.LoginRT]: {
     screen: SCREEN.Login
   }
-}, {
-  navigationOptions: { header: null }
 });
 
 const RootRoutingStacks = createSwitchNavigator(

@@ -4,7 +4,6 @@ import { COLORS } from './variables.constant';
 
 export const MAIN_HEADER_STYLES = StyleSheet.create({
   container: {
-    flex: 1,
     height: 90,
     maxHeight: 90,
     backgroundColor: COLORS.FB_HEADER,
