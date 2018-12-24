@@ -13,10 +13,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 
 import { configureStore } from './store';
 import rootSaga from './store/effects';
-import {
-  AppRoutingContainer,
-  MainFooter
-} from './commons';
+import { AppRoutingContainer } from './commons';
 import { ROUTING_ACTIONS } from './store/actions';
 
 export default class App extends Component {
@@ -41,7 +38,6 @@ export default class App extends Component {
         <PersistGate loading={null} persistor={ this._storeConfig.persistor }>
           <View style={styles.container}>
             <AppRoutingContainer ref={ this.setTopLevelNavigator.bind(this) } />
-            <MainFooter></MainFooter>
           </View>
         </PersistGate>
       </Provider>
