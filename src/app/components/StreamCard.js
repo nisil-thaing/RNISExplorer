@@ -11,12 +11,18 @@ export default function StreamCard(props) {
   return (
     <View style={[ props.style, STREAM_CARD_STYLES.container ]}>
       <CardAuthor></CardAuthor>
-      <CardContent style={{ marginTop: 10 }}></CardContent>
+      <CardContent
+        style={{ marginTop: 10 }}
+        data={ props.data }></CardContent>
       <SocialActivity style={{ marginTop: 10 }}></SocialActivity>
     </View>
   );
 }
 
 StreamCard.propTypes = {
-  style: PropTypes.object
+  style: PropTypes.object,
+  data: PropTypes.shape({
+    type: PropTypes.number,
+    images: PropTypes.arrayOf(PropTypes.any)
+  })
 };

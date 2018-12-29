@@ -8,17 +8,29 @@ import PropTypes from 'prop-types';
 import { CARD_CONTENT_STYLES } from '../style-sheets';
 import CardContentImage from './CardContentImage';
 
-export default function CardContent(props) {
-  const images = [require('../../assets/27573875_363298654140769_4881900956687532032_n.jpg')];
+function ContentMediaWrapper(props) {
+  if (!props.data) return null;
 
+  switch (props.data.type) {
+    case 0: // just dummy assign to image type
+      return <CardContentImage images={ props.data.images } />;
+    default: return null;
+  }  
+}
+
+export default function CardContent(props) {
   return (
     <View style={[ props.style, CARD_CONTENT_STYLES.container ]}>
       <Text style={ CARD_CONTENT_STYLES.textContent }>This is card content</Text>
-      <CardContentImage images={ images }></CardContentImage>
+      <ContentMediaWrapper { ...props } />
     </View>
   );
 }
 
 CardContent.propTypes = {
-  style: PropTypes.object
+  style: PropTypes.object,
+  data: PropTypes.shape({
+    type: PropTypes.number,
+    images: PropTypes.arrayOf(PropTypes.any)
+  })
 };

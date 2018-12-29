@@ -12,8 +12,15 @@ export const CARD_CONTENT_IMAGE_STYLES = StyleSheet.create({
     marginTop: 10
   },
   contentImage: {
-    width: windowWidth,
-    height: windowWidth * 9/16,
     resizeMode: 'cover'
+  },
+  itemSingleImage: {
+    width: windowWidth,
+    height: windowWidth * 9/16
+  },
+  itemTwoImages: {
+    flex: 1,
+    width: windowWidth / 2,
+    height: windowWidth
   }
 });
