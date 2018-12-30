@@ -1,6 +1,7 @@
 import React from 'react';
 import {
   View,
+  Text,
   Image
 } from 'react-native';
 import PropTypes from 'prop-types';
@@ -8,55 +9,66 @@ import PropTypes from 'prop-types';
 import { CARD_CONTENT_IMAGE_STYLES } from '../style-sheets';
 
 export default function CardContentImage(props) {
-  const isSingleImageContent = props.images && props.images.length === 1;
-  const isTwoImagesContent = props.images && props.images.length === 2;
-  const isThreeImagesContent = props.images && props.images.length === 3;
-  const isFourImagesContent = props.images && props.images.length >= 4;
+  let numOfMoreImages = 0;
+  let customImageItemTypes = [];
 
-  const customImageType = index => {
+  if (props.images) {
+    const imagesLength = props.images.length;
+    numOfMoreImages = imagesLength - 4;
+
     switch (true) {
-      case isSingleImageContent && index === 0:
-        return [CARD_CONTENT_IMAGE_STYLES.itemSingleImage];
+      case imagesLength === 1:
+        customImageItemTypes = [[CARD_CONTENT_IMAGE_STYLES.itemSingleImage]];
+        break;
 
-      case isTwoImagesContent:
-        return [
-          CARD_CONTENT_IMAGE_STYLES.itemTwoImages,
-          index === 0 ? { marginRight: 1 } : { marginLeft: 1 }
+      case imagesLength === 2:
+        customImageItemTypes = [
+          [
+            CARD_CONTENT_IMAGE_STYLES.itemTwoImages,
+            { marginRight: 1 }
+          ],
+          [
+            CARD_CONTENT_IMAGE_STYLES.itemTwoImages,
+            { marginLeft: 1 }
+          ],
         ];
+        break;
 
-      case isThreeImagesContent:
-        if (index === 0) return [CARD_CONTENT_IMAGE_STYLES.firstItemOfThreeImagesContent];
-
-        return [
-          CARD_CONTENT_IMAGE_STYLES.itemTwoImages,
-          index === 1 ? { marginRight: 1 } : { marginLeft: 1 }
+      case imagesLength === 3:
+        customImageItemTypes = [
+          [CARD_CONTENT_IMAGE_STYLES.firstItemOfThreeImagesContent],
+          [
+            CARD_CONTENT_IMAGE_STYLES.itemTwoImages,
+            { marginRight: 1 }
+          ],
+          [
+            CARD_CONTENT_IMAGE_STYLES.itemTwoImages,
+            { marginLeft: 1 }
+          ],
         ];
+        break;
 
-      case isFourImagesContent:
-        if (index === 0) return [CARD_CONTENT_IMAGE_STYLES.firstItemOfFourImagesContent];
+      case imagesLength >= 4:
+        customImageItemTypes = [
+          [CARD_CONTENT_IMAGE_STYLES.firstItemOfFourImagesContent],
+          [
+            CARD_CONTENT_IMAGE_STYLES.itemThreeImages,
+            { marginRight: 1 }
+          ],
+          [
+            CARD_CONTENT_IMAGE_STYLES.itemThreeImages,
+            { marginLeft: 1, marginRight: 1 }
+          ],
+          [
+            CARD_CONTENT_IMAGE_STYLES.itemThreeImages,
+            { marginLeft: 1 }
+          ],
+        ];
+        break;
 
-        switch (index) {
-          case 1:
-            return [
-              CARD_CONTENT_IMAGE_STYLES.itemThreeImages,
-              { marginRight: 1 }
-            ];
-          case 2:
-            return [
-              CARD_CONTENT_IMAGE_STYLES.itemThreeImages,
-              { marginLeft: 1, marginRight: 1 }
-            ];
-          case 3:
-            return [
-              CARD_CONTENT_IMAGE_STYLES.itemThreeImages,
-              { marginLeft: 1 }
-            ];
-          default: return [];
-        }
-
-      default: return [];
+      default: break;
     }
-  };
+  }
 
   return (
     <View style={[ props.style, CARD_CONTENT_IMAGE_STYLES.container ]}>
@@ -65,12 +77,19 @@ export default function CardContentImage(props) {
           <Image
             style={[
               CARD_CONTENT_IMAGE_STYLES.contentImage,
-              [ ...customImageType(index) ]
+              [ ...customImageItemTypes[index] ]
             ]}
             key={ index }
             source={ image } />
         ) : null
       )) }
+      { numOfMoreImages > 0
+        ? (
+          <View style={ CARD_CONTENT_IMAGE_STYLES.moreImagesInfoContainer }>
+            <Text style={ CARD_CONTENT_IMAGE_STYLES.moreImagesInfo }>+{ numOfMoreImages }</Text>
+          </View>
+        )
+        : null }
     </View>
   );
 }

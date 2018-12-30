@@ -4,5 +4,6 @@ export const COLORS = {
   FB_SEARCH_INPUT_PLACEHOLDER: '#6d89b3',
   SEPARATE_LINE: '#c3c3c3',
   WHITE: '#fff',
-  BLACK: '#333'
+  BLACK: '#333',
+  IMAGE_BACKDROP_COLOR: 'rgba(0, 0, 0, .7)'
 };
