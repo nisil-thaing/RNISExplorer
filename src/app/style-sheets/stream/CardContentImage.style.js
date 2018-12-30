@@ -4,6 +4,10 @@ import {
 } from 'react-native';
 
 const windowWidth = Dimensions.get('window').width;
+const itemSingleImageHeight = windowWidth * 9/16;
+const itemTwoImagesHeight = windowWidth / 2;
+const itemThreeImagesHeight = windowWidth / 3;
+const firstItemFourImagesHeight = windowWidth * 2/3;
 
 export const CARD_CONTENT_IMAGE_STYLES = StyleSheet.create({
   container: {
@@ -16,11 +20,24 @@ export const CARD_CONTENT_IMAGE_STYLES = StyleSheet.create({
   },
   itemSingleImage: {
     width: windowWidth,
-    height: windowWidth * 9/16
+    height: itemSingleImageHeight
   },
   itemTwoImages: {
     flex: 1,
-    width: windowWidth / 2,
-    height: windowWidth
+    height: itemTwoImagesHeight
+  },
+  itemThreeImages: {
+    flex: 1,
+    height: itemThreeImagesHeight
+  },
+  firstItemOfThreeImagesContent: {
+    width: windowWidth,
+    height: itemTwoImagesHeight,
+    marginBottom: 2
+  },
+  firstItemOfFourImagesContent: {
+    width: windowWidth,
+    height: firstItemFourImagesHeight,
+    marginBottom: 2
   }
 });

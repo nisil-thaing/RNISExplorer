@@ -10,16 +10,50 @@ import { CARD_CONTENT_IMAGE_STYLES } from '../style-sheets';
 export default function CardContentImage(props) {
   const isSingleImageContent = props.images && props.images.length === 1;
   const isTwoImagesContent = props.images && props.images.length === 2;
+  const isThreeImagesContent = props.images && props.images.length === 3;
+  const isFourImagesContent = props.images && props.images.length >= 4;
 
   const customImageType = index => {
     switch (true) {
       case isSingleImageContent && index === 0:
         return [CARD_CONTENT_IMAGE_STYLES.itemSingleImage];
+
       case isTwoImagesContent:
         return [
           CARD_CONTENT_IMAGE_STYLES.itemTwoImages,
-          index === 0 ? { marginRight: 2.5 } : { marginLeft: 2.5 }
+          index === 0 ? { marginRight: 1 } : { marginLeft: 1 }
         ];
+
+      case isThreeImagesContent:
+        if (index === 0) return [CARD_CONTENT_IMAGE_STYLES.firstItemOfThreeImagesContent];
+
+        return [
+          CARD_CONTENT_IMAGE_STYLES.itemTwoImages,
+          index === 1 ? { marginRight: 1 } : { marginLeft: 1 }
+        ];
+
+      case isFourImagesContent:
+        if (index === 0) return [CARD_CONTENT_IMAGE_STYLES.firstItemOfFourImagesContent];
+
+        switch (index) {
+          case 1:
+            return [
+              CARD_CONTENT_IMAGE_STYLES.itemThreeImages,
+              { marginRight: 1 }
+            ];
+          case 2:
+            return [
+              CARD_CONTENT_IMAGE_STYLES.itemThreeImages,
+              { marginLeft: 1, marginRight: 1 }
+            ];
+          case 3:
+            return [
+              CARD_CONTENT_IMAGE_STYLES.itemThreeImages,
+              { marginLeft: 1 }
+            ];
+          default: return [];
+        }
+
       default: return [];
     }
   };
@@ -27,13 +61,15 @@ export default function CardContentImage(props) {
   return (
     <View style={[ props.style, CARD_CONTENT_IMAGE_STYLES.container ]}>
       { props.images && props.images.map((image, index) => (
-        <Image
-          style={[
-            CARD_CONTENT_IMAGE_STYLES.contentImage,
-            [ ...customImageType(index) ]
-          ]}
-          key={ index }
-          source={ image } />  
+        index < 4 ? (
+          <Image
+            style={[
+              CARD_CONTENT_IMAGE_STYLES.contentImage,
+              [ ...customImageType(index) ]
+            ]}
+            key={ index }
+            source={ image } />
+        ) : null
       )) }
     </View>
   );
