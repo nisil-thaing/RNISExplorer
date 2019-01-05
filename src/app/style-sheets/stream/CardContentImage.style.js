@@ -8,9 +8,11 @@ import { COLORS } from '../variables.constant';
 const windowWidth = Dimensions.get('window').width;
 const itemSingleImageHeight = windowWidth * 9/16;
 const itemTwoImagesHeight = windowWidth / 2;
-const itemThreeImagesHeight = windowWidth / 3;
+const itemThreeImagesHeight = windowWidth / 3 - 1;
 const firstItemFourImagesHeight = windowWidth * 2/3;
-const moreImagesInfoWidth = itemThreeImagesHeight - 1;
+const firstItemFiveImagesWidth = windowWidth / 2 - 1;
+const firstItemSixImagesWidth = firstItemFourImagesHeight - 1;
+const moreImagesInfoWidth = itemThreeImagesHeight;
 
 export const CARD_CONTENT_IMAGE_STYLES = StyleSheet.create({
   container: {
@@ -42,6 +44,30 @@ export const CARD_CONTENT_IMAGE_STYLES = StyleSheet.create({
     width: windowWidth,
     height: firstItemFourImagesHeight,
     marginBottom: 2
+  },
+  firstItemOfFiveImagesContent: {
+    width: firstItemFiveImagesWidth,
+    height: firstItemFourImagesHeight,
+    marginBottom: 2
+  },
+  firstItemOfSixImagesContent: {
+    width: firstItemSixImagesWidth,
+    height: firstItemFourImagesHeight,
+    marginRight: 1,
+    marginBottom: 2
+  },
+  secondItemOfSixImagesContent: {
+    width: itemThreeImagesHeight,
+    height: itemThreeImagesHeight,
+    marginLeft: 1,
+    marginBottom: 2
+  },
+  thirdItemOfSixImagesContent: {
+    position: 'absolute',
+    right: 0,
+    top: itemThreeImagesHeight + 2,
+    width: itemThreeImagesHeight,
+    height: itemThreeImagesHeight
   },
   moreImagesInfoContainer: {
     position: 'absolute',

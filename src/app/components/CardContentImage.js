@@ -9,12 +9,14 @@ import PropTypes from 'prop-types';
 import { CARD_CONTENT_IMAGE_STYLES } from '../style-sheets';
 
 export default function CardContentImage(props) {
+  const MAX_SHOWING_IMAGES = 6;
+  let imagesLength = 0;
   let numOfMoreImages = 0;
   let customImageItemTypes = [];
 
   if (props.images) {
-    const imagesLength = props.images.length;
-    numOfMoreImages = imagesLength - 4;
+    imagesLength = props.images.length;
+    numOfMoreImages = imagesLength - MAX_SHOWING_IMAGES;
 
     switch (true) {
       case imagesLength === 1:
@@ -48,7 +50,7 @@ export default function CardContentImage(props) {
         ];
         break;
 
-      case imagesLength >= 4:
+      case imagesLength === 4:
         customImageItemTypes = [
           [CARD_CONTENT_IMAGE_STYLES.firstItemOfFourImagesContent],
           [
@@ -66,6 +68,51 @@ export default function CardContentImage(props) {
         ];
         break;
 
+      case imagesLength === 5:
+        customImageItemTypes = [
+          [
+            CARD_CONTENT_IMAGE_STYLES.firstItemOfFiveImagesContent,
+            { marginRight: 1 }
+          ],
+          [
+            CARD_CONTENT_IMAGE_STYLES.firstItemOfFiveImagesContent,
+            { marginLeft: 1 }
+          ],
+          [
+            CARD_CONTENT_IMAGE_STYLES.itemThreeImages,
+            { marginRight: 1 }
+          ],
+          [
+            CARD_CONTENT_IMAGE_STYLES.itemThreeImages,
+            { marginLeft: 1, marginRight: 1 }
+          ],
+          [
+            CARD_CONTENT_IMAGE_STYLES.itemThreeImages,
+            { marginLeft: 1 }
+          ]
+        ];
+        break;
+
+      case imagesLength >= 6:
+        customImageItemTypes = [
+          [CARD_CONTENT_IMAGE_STYLES.firstItemOfSixImagesContent],
+          [CARD_CONTENT_IMAGE_STYLES.secondItemOfSixImagesContent],
+          [CARD_CONTENT_IMAGE_STYLES.thirdItemOfSixImagesContent],
+          [
+            CARD_CONTENT_IMAGE_STYLES.itemThreeImages,
+            { marginRight: 1 }
+          ],
+          [
+            CARD_CONTENT_IMAGE_STYLES.itemThreeImages,
+            { marginLeft: 1, marginRight: 1 }
+          ],
+          [
+            CARD_CONTENT_IMAGE_STYLES.itemThreeImages,
+            { marginLeft: 1 }
+          ]
+        ];
+        break;
+
       default: break;
     }
   }
@@ -73,11 +120,11 @@ export default function CardContentImage(props) {
   return (
     <View style={[ props.style, CARD_CONTENT_IMAGE_STYLES.container ]}>
       { props.images && props.images.map((image, index) => (
-        index < 4 ? (
+        index < MAX_SHOWING_IMAGES ? (
           <Image
             style={[
               CARD_CONTENT_IMAGE_STYLES.contentImage,
-              [ ...customImageItemTypes[index] ]
+              [ ...(customImageItemTypes[index] || []) ]
             ]}
             key={ index }
             source={ image } />
