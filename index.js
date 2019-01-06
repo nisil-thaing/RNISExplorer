@@ -1,7 +1,10 @@
 /** @format */
 
-import {AppRegistry} from 'react-native';
-import App from './src/app';
-import {name as appName} from './app.json';
+import { AppRegistry } from 'react-native';
+import Config from 'react-native-config';
 
-AppRegistry.registerComponent(appName, () => App);
+import { name as appName } from './app.json';
+import App from './src/app';
+import StorybookUIRoot from './storybook';
+
+AppRegistry.registerComponent(appName, () => Config.IS_STORYBOOK ? StorybookUIRoot : App);
